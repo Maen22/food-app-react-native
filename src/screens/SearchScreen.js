@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { Text, ScrollView } from "react-native";
 
 import SearchBar from "../components/SearchBar";
 import useResults from "../hooks/useResults";
 import ResultsList from "../components/ResultsList";
 
-const SearchScreen = ({ navigation: { navigate } }) => {
+const SearchScreen = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchApi, results, err] = useResults();
 
   const filterResultsByPrice = (price) => {
-    // pricce === '$' || '$$' || '$$$'
     return results.filter((result) => {
       return result.price === price;
     });
@@ -40,7 +39,5 @@ const SearchScreen = ({ navigation: { navigate } }) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default SearchScreen;
